@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_28336bd50bb640f2986ad86d0c699c67 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_28336bd50bb640f2986ad86d0c699c67" ></div>
+        
+</body>
+<script>    
+    
+            var map_28336bd50bb640f2986ad86d0c699c67 = L.map(
+                "map_28336bd50bb640f2986ad86d0c699c67",
+                {
+                    center: [42.82995815, -74.78991444],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0ba054cd6b0c45ecb82c556db1ada398 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_28336bd50bb640f2986ad86d0c699c67);
+        
+    
+        function geo_json_1728dc94d2694c859d0f8f4f948c4b31_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"fillColor": "#ffdc30"};
+            }
+        }
+        function geo_json_1728dc94d2694c859d0f8f4f948c4b31_onEachFeature(feature, layer) {
+            layer.on({
+                click: function(e) {
+                    map_28336bd50bb640f2986ad86d0c699c67.fitBounds(e.target.getBounds());
+                }
+            });
+        };
+        var geo_json_1728dc94d2694c859d0f8f4f948c4b31 = L.geoJson(null, {
+                onEachFeature: geo_json_1728dc94d2694c859d0f8f4f948c4b31_onEachFeature,
+            
+                style: geo_json_1728dc94d2694c859d0f8f4f948c4b31_styler,
+        }).addTo(map_28336bd50bb640f2986ad86d0c699c67);
+            geo_json_1728dc94d2694c859d0f8f4f948c4b31.addData({"features": [{"geometry": {"coordinates": [-71.0636, 42.3581], "type": "Point"}, "properties": {"name": "one"}, "type": "Feature"}, {"geometry": {"coordinates": [-74.78991444, 42.82995815], "type": "Point"}, "properties": {"name": "two"}, "type": "Feature"}, {"geometry": {"coordinates": [-78.56603306, 39.17929819], "type": "Point"}, "properties": {"name": "three"}, "type": "Feature"}], "type": "FeatureCollection"});
+        
+    
+            var geo_json_1728dc94d2694c859d0f8f4f948c4b31searchControl = new L.Control.Search({
+                layer: geo_json_1728dc94d2694c859d0f8f4f948c4b31,
+                
+                propertyName: 'name',
+                
+                collapsed: true,
+                textPlaceholder: 'Search',
+            
+                initial: false,
+                
+                zoom: 14,
+                
+                position:'topright',
+                hideMarkerOnCollapse: true
+            
+                });
+                geo_json_1728dc94d2694c859d0f8f4f948c4b31searchControl.on('search:locationfound', function(e) {
+                    geo_json_1728dc94d2694c859d0f8f4f948c4b31.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_1728dc94d2694c859d0f8f4f948c4b31searchControl.on('search:collapsed', function(e) {
+                        geo_json_1728dc94d2694c859d0f8f4f948c4b31.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_28336bd50bb640f2986ad86d0c699c67.addControl( geo_json_1728dc94d2694c859d0f8f4f948c4b31searchControl );
+
+        
+</script>
